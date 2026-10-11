@@ -1,0 +1,61 @@
+%ic {
+	font-family: icons;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	line-height: 1;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class*='_icon-'] {
+	font-size: var(--sss-icon-size, inherit);
+	color: var(--sss-icon-color, currentColor);
+	transform: var(--sss-icon-transform, none);
+	transition:
+		transform var(--sss-transition-time) var(--sss-transition-ease),
+		color var(--sss-transition-time) var(--sss-transition-ease);
+
+	&::before {
+		@extend %ic;
+
+		display: block;
+	}
+}
+
+._icon-arrow-right::before {
+	content: '\e900';
+}
+
+._icon-arrow-swap::before {
+	content: '\e901';
+}
+
+._icon-check::before {
+	content: '\e902';
+}
+
+._icon-chevron-down::before {
+	content: '\e903';
+}
+
+._icon-chevron-up::before {
+	content: '\e904';
+}
+
+._icon-menu::before {
+	content: '\e905';
+}
+
+._icon-triangle-down::before {
+	content: '\e906';
+}
+
+._icon-triangle-up::before {
+	content: '\e907';
+}
+
+._icon-search::before {
+	content: '\e907';
+}

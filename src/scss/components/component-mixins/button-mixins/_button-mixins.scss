@@ -1,0 +1,60 @@
+@use '@scss' as *;
+
+@mixin button-primary {
+	--sss-button-bg-def: var(--sss-accent-def);
+	--sss-button-bg-hov: var(--sss-accent-hov);
+	--sss-button-bg-act: var(--sss-accent-press);
+	--sss-button-bg-disabled: var(--sss-bg-field-hov);
+	--sss-button-border-color-def: var(--sss-accent-def);
+	--sss-button-border-color-hov: var(--sss-accent-hov);
+	--sss-button-border-color-act: var(--sss-accent-press);
+	--sss-button-border-color-disabled: var(--sss-bg-field-hov);
+	--sss-button-color-def: var(--sss-text-on-accent);
+	--sss-button-color-hov: var(--sss-text-on-accent);
+	--sss-button-color-act: var(--sss-text-on-accent);
+	--sss-button-color-disabled: var(--sss-text-muted);
+}
+
+@mixin button-secondary {
+	--sss-button-bg-def: var(--sss-bg-page);
+	--sss-button-bg-hov: var(--sss-bg-field);
+	--sss-button-bg-act: var(--sss-bg-field-hov);
+	--sss-button-bg-disabled: var(--sss-bg-page);
+	--sss-button-border-color-def: var(--sss-border-strong);
+	--sss-button-border-color-hov: var(--sss-text-primary);
+	--sss-button-border-color-act: var(--sss-text-primary);
+	--sss-button-border-color-disabled: var(--sss-border-def);
+	--sss-button-color-def: var(--sss-text-primary);
+	--sss-button-color-hov: var(--sss-text-primary);
+	--sss-button-color-act: var(--sss-text-primary);
+	--sss-button-color-disabled: var(--sss-text-muted);
+}
+
+@mixin button-ghost {
+	--sss-button-bg-def: var(--sss-bg-page);
+	--sss-button-bg-hov: var(--sss-bg-field);
+	--sss-button-bg-act: var(--sss-bg-field-hov);
+	--sss-button-bg-disabled: var(--sss-bg-page);
+	--sss-button-border-color-def: var(--sss-bg-page);
+	--sss-button-border-color-hov: var(--sss-bg-field);
+	--sss-button-border-color-act: var(--sss-bg-field-hov);
+	--sss-button-border-color-disabled: var(--sss-bg-page);
+	--sss-button-color-def: var(--sss-text-primary);
+	--sss-button-color-hov: var(--sss-text-accent);
+	--sss-button-color-act: var(--sss-text-accent);
+	--sss-button-color-disabled: var(--sss-text-muted);
+}
+
+@mixin button-l {
+	--sss-button-height: #{rem(56)};
+	--sss-button-padding-inline: #{rem(28)};
+	--sss-button-gap: #{rem(12)};
+	--sss-button-icon-size: #{rem(16)};
+}
+
+@mixin button-m {
+	--sss-button-height: #{rem(36)};
+	--sss-button-padding-inline: #{rem(17)};
+	--sss-button-gap: #{rem(4)};
+	--sss-button-icon-size: #{rem(12)};
+}

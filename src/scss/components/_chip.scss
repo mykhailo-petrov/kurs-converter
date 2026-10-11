@@ -1,0 +1,33 @@
+@use '@scss' as *;
+@use '@scss/base-mixins' as mixins;
+@use '@scss/typography' as typography;
+
+.chip {
+	@include typography.mono-body;
+
+	display: grid;
+	place-items: center;
+	min-height: var(--sss-chip-height, rem(42));
+	padding: rem(2) rem(16);
+	border: 1px solid var(--sss-border-def);
+	border-radius: calc(var(--sss-chip-height, rem(42)) / 2);
+	background: var(--sss-bg-page);
+	color: var(--sss-text-secondary);
+	transition:
+		border-color var(--sss-transition-time) var(--sss-transition-ease),
+		background var(--sss-transition-time) var(--sss-transition-ease),
+		color var(--sss-transition-time) var(--sss-transition-ease);
+
+	@include mixins.hover {
+		border-color: var(--sss-border-strong);
+		background: var(--sss-bg-field);
+		color: var(--sss-text-primary);
+	}
+
+	&._active,
+	&:active {
+		border-color: var(--sss-accent-def);
+		background: var(--sss-bg-accent-subtle);
+		color: var(--sss-text-accent);
+	}
+}

@@ -1,0 +1,135 @@
+@use '@scss' as *;
+
+@mixin display-xl {
+	font-family: var(--sss-font-primary);
+	font-size: rem(112);
+	font-weight: 500;
+	line-height: 0.92;
+	letter-spacing: em(-4.48, 112);
+	text-transform: var(--sss-display-xl-transform, unset);
+}
+
+@mixin display-l {
+	font-family: var(--sss-font-primary);
+	font-size: rem(72);
+	font-weight: 500;
+	line-height: 0.95;
+	letter-spacing: em(-2.16, 72);
+	text-transform: var(--sss-display-l-transform, unset);
+}
+
+@mixin display-m {
+	font-family: var(--sss-font-primary);
+	font-size: rem(44);
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: em(-0.88, 44);
+	text-transform: var(--sss-display-m-transform, unset);
+}
+
+@mixin header-h1 {
+	font-family: var(--sss-font-primary);
+	font-size: rem(32);
+	font-weight: 500;
+	line-height: 1.1;
+	letter-spacing: em(-0.32, 32);
+	text-transform: var(--sss-header-h1-transform, unset);
+}
+
+@mixin header-h2 {
+	font-family: var(--sss-font-primary);
+	font-size: rem(24);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: em(-0.24, 24);
+	text-transform: var(--sss-header-h2-transform, unset);
+}
+
+@mixin header-h3 {
+	font-family: var(--sss-font-primary);
+	font-size: rem(18);
+	font-weight: 500;
+	line-height: 1.25;
+	letter-spacing: 0;
+	text-transform: var(--sss-header-h3-transform, unset);
+}
+
+@mixin body-l {
+	font-family: var(--sss-font-primary);
+	font-size: rem(18);
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0;
+	text-transform: var(--sss-body-l-transform, unset);
+}
+
+@mixin body-m {
+	font-family: var(--sss-font-primary);
+	font-size: rem(16);
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0;
+	text-transform: var(--sss-body-m-transform, unset);
+}
+
+@mixin body-s {
+	font-family: var(--sss-font-primary);
+	font-size: rem(14);
+	font-weight: 400;
+	line-height: 1.45;
+	letter-spacing: 0;
+	text-transform: var(--sss-body-s-transform, unset);
+}
+
+@mixin mono-amount-xl {
+	font-family: var(--sss-font-mono);
+	font-size: rem(64);
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: em(-1.92, 64);
+	text-transform: var(--sss-mono-amount-xl-transform, uppercase);
+}
+
+@mixin mono-amount-l {
+	font-family: var(--sss-font-mono);
+	font-size: rem(40);
+	font-weight: 400;
+	line-height: 1.1;
+	letter-spacing: em(-0.8, 40);
+	text-transform: var(--sss-mono-amount-l-transform, uppercase);
+}
+
+@mixin mono-amount-m {
+	font-family: var(--sss-font-mono);
+	font-size: rem(24);
+	font-weight: 400;
+	line-height: 1.2;
+	letter-spacing: em(-0.24, 24);
+	text-transform: var(--sss-mono-amount-m-transform, uppercase);
+}
+
+@mixin mono-body {
+	font-family: var(--sss-font-mono);
+	font-size: rem(14);
+	font-weight: 400;
+	line-height: 1.4;
+	text-transform: var(--sss-mono-body-transform, uppercase);
+}
+
+@mixin mono-label {
+	font-family: var(--sss-font-mono);
+	font-size: rem(12);
+	font-weight: 400;
+	line-height: 1.3;
+	letter-spacing: em(0.96, 12);
+	text-transform: var(--sss-mono-label-transform, uppercase);
+}
+
+@mixin mono-button {
+	font-family: var(--sss-font-mono);
+	font-size: rem(13);
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: em(0.52, 13);
+	text-transform: var(--sss-mono-button-transform, uppercase);
+}

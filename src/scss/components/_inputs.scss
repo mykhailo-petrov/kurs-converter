@@ -1,0 +1,82 @@
+@use '@scss' as *;
+@use '@scss/font/icons';
+@use '@scss/breakpoints' as breakpoint;
+@use '@scss/typography' as typography;
+@use '@scss/base-mixins' as mixins;
+
+.form-container {
+	position: relative;
+
+	&__input,
+	&__textarea {
+		@include typography.mono-amount-m;
+
+		display: block;
+		width: 100%;
+		height: var(--sss-input-height, rem(48));
+		background: transparent;
+		color: var(--sss-text-primary);
+		caret-color: var(--sss-accent-def);
+
+		@include breakpoint.tab {
+			@include typography.mono-amount-l;
+		}
+
+		&::placeholder {
+			font-family: inherit;
+			font-size: inherit;
+			color: var(--sss-input-placeholder-color, var(--sss-text-gray));
+			transition:
+				color var(--sss-transition-time) var(--sss-transition-ease),
+				opacity var(--sss-transition-time) var(--sss-transition-ease);
+		}
+
+		&._form-focus {
+			outline: none;
+		}
+
+		&._form-error {
+			color: var(--sss-status-down);
+		}
+	}
+
+	&__textarea {
+		height: auto;
+		min-height: rem(104);
+		padding-block: rem(10);
+		resize: none;
+	}
+}
+
+.form-label {
+	display: grid;
+	gap: rem(4);
+	cursor: pointer;
+}
+
+.form-error-text {
+	grid-column: 1 / -1;
+	font-size: rem(14);
+	color: var(--sss-error);
+}
+
+.form-container__input,
+.form-container__select,
+.form-container__textarea {
+	&:autofill,
+	&:autofill:hover,
+	&:autofill:focus,
+	&:autofill:active,
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus,
+	&:-webkit-autofill:active {
+		filter: none;
+		transition:
+			border-color var(--sss-transition-time) var(--sss-transition-ease),
+			background-color 600000s 0s,
+			color 600000s 0s;
+		-webkit-text-fill-color: transparent;
+		caret-color: var(--sss-accent-def);
+	}
+}

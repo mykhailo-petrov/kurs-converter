@@ -1,0 +1,79 @@
+@use '@scss' as *;
+
+[data-wave] {
+	filter: url('#wave');
+
+	@media (prefers-reduced-motion: reduce) {
+		filter: none;
+	}
+}
+
+.svg-filters {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.skeleton {
+	position: relative;
+	overflow: hidden;
+	pointer-events: none;
+
+	&::before,
+	&::after {
+		position: absolute;
+		z-index: 1;
+		inset: 0;
+		border-radius: inherit;
+		content: '';
+	}
+
+	&::before {
+		background: var(--sss-bg-surface);
+		opacity: 0.85;
+	}
+
+	&::after {
+		background: linear-gradient(
+			100deg,
+			transparent 30%,
+			color-mix(in srgb, var(--sss-text-primary) 8%, transparent) 50%,
+			transparent 70%
+		);
+		transform: translateX(-100%);
+		animation: shimmer 1.6s ease-in-out infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		&::after {
+			animation: none;
+		}
+	}
+}
+
+@keyframes arrow-dance {
+	0%,
+	100% {
+		transform: translateX(rem(0));
+	}
+
+	25% {
+		transform: translateX(rem(3));
+	}
+
+	50% {
+		transform: translateX(rem(0));
+	}
+
+	75% {
+		transform: translateX(rem(-1));
+	}
+}
+
+@keyframes shimmer {
+	to {
+		transform: translate(100%);
+	}
+}

@@ -1,0 +1,61 @@
+@use '@scss' as *;
+@use '@scss/components/component-mixins/link-mixins' as links;
+@use '@scss/typography' as typography;
+@use '@scss/breakpoints' as breakpoint;
+
+.footer {
+	&__container {
+		display: grid;
+		gap: rem(24);
+		padding-block: rem(32);
+
+		@include breakpoint.tab {
+			gap: rem(32);
+			padding-block: rem(48);
+		}
+	}
+
+	&__top,
+	&__bottom {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: rem(24) rem(42);
+	}
+
+	&__bottom {
+		@include typography.mono-label;
+
+		row-gap: rem(8);
+		color: var(--sss-text-muted);
+	}
+
+	&__list {
+		display: flex;
+		gap: rem(20);
+
+		@include breakpoint.tab {
+			gap: rem(32);
+		}
+	}
+
+	&__item {
+		@include links.link-menu;
+	}
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		padding-block: rem(6);
+	}
+
+	&__copy {
+	}
+
+	&__slogan {
+	}
+}

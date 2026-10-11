@@ -1,0 +1,240 @@
+@use '@scss' as *;
+@use '@scss/breakpoints' as breakpoint;
+@use '@scss/font/icons' as icons;
+@use '@scss/typography' as typography;
+@use '@scss/base-mixins' as mixins;
+
+.converter-form {
+	position: relative;
+	display: grid;
+	gap: rem(16);
+	padding: rem(24);
+	border: 1px solid var(--sss-border-def);
+	border-radius: var(--sss-radius-lg);
+	background: var(--sss-bg-surface);
+
+	@include breakpoint.tab {
+		gap: rem(20);
+		padding: rem(32);
+	}
+
+	&__head {
+	}
+
+	&__fields {
+		display: grid;
+		gap: rem(8);
+		margin-bottom: rem(4);
+	}
+
+	&__field {
+	}
+
+	&__swap {
+		display: grid;
+		align-items: center;
+		grid-template-columns: 1fr rem(56) 1fr;
+		gap: rem(12);
+
+		&::before,
+		&::after {
+			display: block;
+			width: 100%;
+			height: rem(1);
+			background: var(--sss-border-def);
+			pointer-events: none;
+			content: '';
+		}
+	}
+
+	&__button-swap {
+		display: grid;
+		place-items: center;
+		width: rem(56);
+		height: rem(56);
+		border: 1px solid var(--sss-border-strong);
+		border-radius: 50%;
+		background: var(--sss-bg-surface);
+		color: var(--sss-text-primary);
+		transition:
+			background var(--sss-transition-time) var(--sss-transition-ease),
+			border-color var(--sss-transition-time) var(--sss-transition-ease),
+			color var(--sss-transition-time) var(--sss-transition-ease);
+		cursor: pointer;
+
+		&::before {
+			@extend %ic;
+
+			font-size: rem(22);
+			color: currentColor;
+			pointer-events: none;
+			content: '\e901';
+		}
+
+		@include mixins.hover {
+			border-color: var(--sss-accent-def);
+			background: var(--sss-bg-field);
+			color: var(--sss-text-accent);
+		}
+
+		&:active {
+			border-color: var(--sss-accent-def);
+			background: var(--sss-accent-def);
+			color: var(--sss-text-on-accent);
+		}
+	}
+
+	&__note {
+	}
+
+	&__bottom {
+	}
+}
+
+.head-converter-form {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: rem(4);
+
+	&__title {
+		@include typography.header-h3;
+	}
+
+	&__last-update {
+		@include typography.mono-label;
+
+		color: var(--sss-text-secondary);
+	}
+}
+
+.field-converter {
+	display: grid;
+	gap: rem(2);
+	padding: rem(24);
+	border: 1px solid var(--sss-border-def);
+	border-radius: var(--sss-radius-lg);
+	background: var(--sss-bg-surface-raised);
+	transition:
+		background var(--sss-transition-time) var(--sss-transition-ease),
+		border-color var(--sss-transition-time) var(--sss-transition-ease);
+	cursor: pointer;
+
+	@include breakpoint.tab {
+		gap: rem(16);
+	}
+
+	@include mixins.hover {
+		border-color: var(--sss-border-strong);
+	}
+
+	&:active,
+	&:focus-within {
+		border-color: var(--sss-border-focus);
+	}
+
+	&__head {
+		@include typography.mono-label;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: rem(4);
+		color: var(--sss-text-secondary);
+	}
+
+	&__operation {
+	}
+
+	&__group {
+		display: flex;
+		flex-direction: column;
+
+		@include breakpoint.tab {
+			flex-direction: row;
+		}
+	}
+
+	&__balance {
+	}
+
+	&__input {
+		@include breakpoint.tab {
+			flex: 1 1 auto;
+		}
+	}
+
+	&__select {
+		--sss-custom-select-border-radius: var(--sss-radius-sm);
+
+		@include breakpoint.tab {
+			--sss-custom-select-border-radius: var(--sss-radius-pill);
+
+			flex: 0 0 rem(128);
+		}
+	}
+}
+
+.bottom-converter-form {
+	display: grid;
+	gap: rem(16);
+
+	@include breakpoint.tab {
+		gap: rem(20);
+	}
+
+	&__quick-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: rem(6);
+	}
+
+	&__chip {
+		flex: 1;
+
+		@include breakpoint.tab {
+			flex: initial;
+		}
+	}
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: rem(8);
+		padding: rem(12) rem(14);
+		border-radius: var(--sss-radius-md);
+		background: var(--sss-bg-surface-raised);
+
+		@include breakpoint.tab {
+			padding: rem(20) rem(16);
+		}
+	}
+
+	&__rate {
+		@include typography.mono-body;
+	}
+
+	&__rate-info {
+		@include typography.mono-label;
+
+		color: var(--sss-status-up);
+
+		&._status-up {
+			color: var(--sss-status-up);
+		}
+
+		&._status-down {
+			color: var(--sss-status-down);
+		}
+	}
+
+	&__button {
+	}
+
+	&__note {
+		@include typography.body-s;
+
+		color: var(--sss-text-secondary);
+	}
+}

@@ -1,0 +1,24 @@
+@use '@scss' as *;
+@use '@scss/breakpoints' as breakpoint;
+@use '@scss' as *;
+
+:root {
+	--sss-font-primary: 'Space Grotesk', sans-serif;
+	--sss-font-mono: 'Space Mono', monospace;
+	--sss-font-inter: 'Inter', sans-serif;
+	--sss-transition-time: 500ms;
+	--sss-header-height: #{rem(76)};
+	--sss-watcher-def-duration: 0.7s;
+	--sss-watcher-image-duration: 1.3s;
+	--sss-transition-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--sss-watcher-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--sss-radius-sm: #{rem(8)};
+	--sss-radius-md: #{rem(16)};
+	--sss-radius-lg: #{rem(24)};
+	--sss-radius-xl: #{rem(32)};
+	--sss-radius-pill: #{rem(100)};
+
+	@include breakpoint.tab {
+		--sss-header-height: #{rem(92)};
+	}
+}

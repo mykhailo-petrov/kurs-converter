@@ -1,0 +1,16 @@
+{
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 100,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"semi": true,
+	"bracketSpacing": true,
+	"arrowParens": "always",
+	"endOfLine": "lf",
+	"plugins": [
+		"./scripts/prettier-plugin-scss-fix.mjs",
+		"./scripts/prettier-plugin-html-attrs.mjs",
+		"./scripts/prettier-plugin-js-chains.mjs"
+	]
+}

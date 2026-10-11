@@ -1,0 +1,88 @@
+@use '@scss' as *;
+@use '@scss/components/component-mixins/button-mixins' as buttons;
+@use '@scss/typography' as typography;
+@use '@scss/base-mixins' as mixins;
+@use '@scss/font/icons' as icons;
+
+.button {
+	@include typography.mono-button;
+
+	--sss-button-bg-def: var(--sss-accent-def);
+	--sss-button-border-color-def: var(--sss-accent-def);
+	--sss-button-color-def: var(--sss-text-on-accent);
+
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--sss-button-gap, rem(12));
+	min-width: var(--sss-button-min-width, unset);
+	min-height: var(--sss-button-height, rem(56));
+	padding-block: rem(4);
+	padding-inline: var(--sss-button-padding-inline, rem(28));
+	border: 1px solid var(--sss-button-border-color, var(--sss-button-border-color-def));
+	border-radius: 9999px;
+	background-color: var(--sss-button-bg, var(--sss-button-bg-def));
+	color: var(--sss-button-color, var(--sss-button-color-def));
+	transition:
+		background-color var(--sss-transition-time) var(--sss-transition-ease),
+		border-color var(--sss-transition-time) var(--sss-transition-ease),
+		color var(--sss-transition-time) var(--sss-transition-ease);
+
+	@include mixins.hover {
+		--sss-button-bg: var(--sss-button-bg-hov);
+		--sss-button-border-color: var(--sss-button-border-color-hov);
+		--sss-button-color: var(--sss-button-color-hov);
+	}
+
+	&:active {
+		--sss-button-bg: var(--sss-button-bg-act);
+		--sss-button-border-color: var(--sss-button-border-color-act);
+		--sss-button-color: var(--sss-button-color-act);
+	}
+
+	&:disabled {
+		--sss-button-bg: var(--sss-button-bg-disabled);
+		--sss-button-color: var(--sss-button-color-disabled);
+		--sss-button-border-color: var(--sss-button-border-color-disabled);
+	}
+
+	&--fw {
+		width: 100%;
+	}
+
+	&--arrow-right {
+		&::after {
+			@extend %ic;
+
+			font-size: var(--sss-button-icon-size, rem(16));
+			color: var(--sss-button-icon-color, currentColor);
+			animation: var(--sss-button-icon-animation, none) 1s infinite linear;
+			pointer-events: none;
+			content: '\e900';
+		}
+
+		@include mixins.hover {
+			--sss-button-icon-animation: arrow-dance;
+		}
+	}
+
+	&--primary {
+		@include buttons.button-primary;
+	}
+
+	&--secondary {
+		@include buttons.button-secondary;
+	}
+
+	&--ghost {
+		@include buttons.button-ghost;
+	}
+
+	&--l {
+		@include buttons.button-l;
+	}
+
+	&--m {
+		@include buttons.button-m;
+	}
+}

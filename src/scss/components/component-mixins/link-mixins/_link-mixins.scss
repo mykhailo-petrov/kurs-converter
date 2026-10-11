@@ -1,0 +1,86 @@
+@use '@scss' as *;
+@use '@scss/typography' as typography;
+@use '@scss/base-mixins' as mixins;
+@use '@scss/breakpoints' as breakpoint;
+@use '@scss/local-mixins' as local-mixins;
+
+@mixin link-primary {
+	color: var(--sss-link-primary);
+
+	@include mixins.hover {
+		color: var(--sss-link-primary-hover);
+	}
+
+	&:active {
+		color: var(--sss-link-primary-active);
+	}
+
+	&--active,
+	&._active {
+		color: var(--sss-link-primary-active);
+	}
+}
+
+@mixin link-menu {
+	@include typography.body-s;
+
+	--sss-header-menu-link-color-def: var(--sss-text-secondary);
+	--sss-header-menu-link-color-hov: var(--sss-text-primary);
+	--sss-header-menu-link-color-act: var(--sss-text-primary);
+	--sss-preudo-circle-op: 0;
+	--sss-preudo-circle-scale: 0;
+
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: rem(8);
+	text-transform: capitalize;
+	white-space: nowrap;
+	color: var(--sss-header-menu-link-color, var(--sss-header-menu-link-color-def));
+	transition: color var(--sss-transition-time) var(--sss-transition-ease) ж;
+	will-change: transform;
+	cursor: pointer;
+
+	&::after {
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+		display: var(--sss-link-menu-decor-display, block);
+		width: 100%;
+		height: rem(1);
+		background: var(--sss-accent-def);
+		transform: translateY(rem(-3)) scaleX(var(--sss-link-menu-decor-scale, 0));
+		transition: transform var(--sss-transition-time) var(--sss-transition-ease);
+		pointer-events: none;
+		content: '';
+	}
+
+	@include breakpoint.tab {
+		@include local-mixins.pseudo-circle(
+			$size: rem(6),
+			$bg: var(--sss-accent-def),
+			$pseudo: 'before'
+		);
+	}
+
+	@include mixins.hover {
+		color: var(--sss-header-menu-link-color-hov);
+	}
+
+	&:active {
+		color: var(--sss-header-menu-link-color-act);
+	}
+
+	&._active {
+		--sss-link-menu-decor-scale: 1;
+
+		color: var(--sss-header-menu-link-color-act);
+
+		@include breakpoint.tab {
+			--sss-link-menu-decor-display: none;
+			--sss-preudo-circle-scale: 1;
+			--sss-preudo-circle-op: 1;
+		}
+	}
+}

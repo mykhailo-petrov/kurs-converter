@@ -1,0 +1,162 @@
+<form
+	class="converter-form"
+	id="converter"
+	data-converter
+>
+	<load
+		src="src/partials/error-message/error-message.html"
+		message="We couldn't load the latest exchange rates."
+	/>
+	<div class="converter-form__head head-converter-form">
+		<h2 class="head-converter-form__title">Converter</h2>
+		<div class="head-converter-form__last-update">
+			Checked at <time data-converter-last-update></time>
+		</div>
+	</div>
+	<div class="converter-form__fields">
+		<label for="amount-from" class="converter-form__field field-converter">
+			<span class="field-converter__head">
+				<span class="field-converter__operation">You send</span>
+			</span>
+			<span class="field-converter__group form-container">
+				<input
+					data-converter-input-from
+					class="field-converter__input form-container__input"
+					type="text"
+					inputmode="decimal"
+					autocomplete="off"
+					name="amountFrom"
+					id="amount-from"
+					placeholder="0.00"
+				/>
+				<custom-select
+					data-select-search
+					data-select-selected
+					data-select-icon
+					data-select-api
+					data-converter-select-from
+					name="currencyFrom"
+					id="currency-from"
+					class="field-converter__select form-container__select custom-select"
+					aria-label="Currency you send"
+				>
+					<span
+						data-select-option
+						class="custom-select__option"
+						value="USD"
+						data-icon="$"
+						role="option"
+						>USD
+					</span>
+					<span
+						data-select-option
+						class="custom-select__option"
+						data-icon="₴"
+						role="option"
+						value="UAH"
+						>UAH
+					</span>
+				</custom-select>
+			</span>
+		</label>
+		<div class="converter-form__swap">
+			<button
+				data-converter-swap
+				type="button"
+				id="converter-swap"
+				class="converter-form__button-swap"
+				aria-label="Swap currencies"
+			></button>
+		</div>
+		<label for="amount-to" class="converter-form__field field-converter">
+			<span class="field-converter__head">
+				<span class="field-converter__operation">You get</span>
+				<span class="field-converter__balance">Mid-market</span>
+			</span>
+			<span class="field-converter__group form-container">
+				<input
+					data-converter-input-to
+					class="field-converter__input form-container__input"
+					type="text"
+					inputmode="decimal"
+					autocomplete="off"
+					name="amountTo"
+					id="amount-to"
+					placeholder="0.00"
+				/>
+				<custom-select
+					data-converter-select-to
+					data-select-search
+					data-select-selected
+					data-select-icon
+					data-select-api
+					name="currencyTo"
+					id="currency-to"
+					class="field-converter__select form-container__select custom-select"
+					aria-label="Currency you get"
+				>
+					<span
+						data-select-option
+						class="custom-select__option"
+						value="UAH"
+						data-icon="₴"
+						role="option"
+						>UAH
+					</span>
+					<span
+						data-select-option
+						class="custom-select__option"
+						data-icon="$"
+						role="option"
+						value="USD"
+						>USD
+					</span>
+				</custom-select>
+			</span>
+		</label>
+	</div>
+	<div class="converter-form__bottom bottom-converter-form">
+		<div class="bottom-converter-form__quick-chips" data-converter-chips>
+			<button
+				data-converter-chip="100"
+				type="button"
+				class="bottom-converter-form__chip chip"
+			>
+				100
+			</button>
+			<button
+				data-converter-chip="500"
+				type="button"
+				class="bottom-converter-form__chip chip"
+			>
+				500
+			</button>
+			<button
+				data-converter-chip="1000"
+				type="button"
+				class="bottom-converter-form__chip chip"
+			>
+				1,000
+			</button>
+			<button
+				data-converter-chip="5000"
+				type="button"
+				class="bottom-converter-form__chip chip"
+			>
+				5,000
+			</button>
+			<button
+				data-converter-chip="10000"
+				type="button"
+				class="bottom-converter-form__chip chip"
+			>
+				10,000
+			</button>
+		</div>
+		<div class="bottom-converter-form__info" aria-live="polite">
+			<div data-converter-rate class="bottom-converter-form__rate">-</div>
+			<div data-converter-rate-info class="bottom-converter-form__rate-info"></div>
+		</div>
+		<span class="bottom-converter-form__note">Mid-market rate. Your bank may charge a markup.</span>
+	</div>
+</form>

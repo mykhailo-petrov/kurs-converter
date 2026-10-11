@@ -1,0 +1,396 @@
+@use '@scss' as *;
+@use '@scss/breakpoints' as breakpoint;
+@use '@scss/settings' as settings;
+@use '@scss/typography' as typography;
+@use '@scss/base-mixins' as mixins;
+@use '@scss/font/icons' as icons;
+@use '@scss/local-mixins' as local-mixins;
+
+.convert-block {
+	&__container {
+		position: relative;
+		display: grid;
+		align-items: center;
+		gap: rem(32);
+		margin-top: var(--sss-header-height);
+		padding-block: rem(24) rem(64);
+
+		@include breakpoint.tab {
+			gap: rem(48);
+			padding-block: rem(48) rem(96);
+		}
+
+		@include breakpoint.desk-s {
+			grid-template-columns: rem(496) 1fr;
+			grid-auto-flow: column;
+			gap: rem(64);
+			padding-block: rem(36) rem(48);
+		}
+
+		@include breakpoint.desk-m {
+			grid-template-columns: rem(656) 1fr;
+		}
+
+		&::before {
+			position: absolute;
+			z-index: -1;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			padding-inline: inherit;
+			background: var(--sss-border-def) content-box;
+			pointer-events: none;
+			content: '';
+		}
+	}
+
+	&__content {
+		display: grid;
+		gap: rem(20);
+
+		@include breakpoint.tab {
+			gap: rem(28);
+		}
+	}
+
+	&__label {
+		@include typography.mono-label;
+
+		display: flex;
+		align-items: center;
+		gap: rem(8);
+		color: var(--sss-text-secondary);
+
+		@include local-mixins.pseudo-circle(
+			$size: rem(8),
+			$bg: var(--sss-status-up),
+			$pseudo: 'before'
+		);
+	}
+
+	&__title {
+		@include typography.display-m;
+
+		max-width: rem(350);
+
+		@include breakpoint.tab {
+			@include typography.display-l;
+
+			max-width: rem(544);
+		}
+
+		@include breakpoint.desk-s {
+			max-width: rem(379);
+		}
+
+		@include breakpoint.desk-m {
+			@include typography.display-xl;
+
+			max-width: rem(579);
+		}
+	}
+
+	&__description {
+		@include typography.body-m;
+
+		color: var(--sss-text-secondary);
+
+		@include breakpoint.tab {
+			@include typography.body-l;
+		}
+	}
+
+	&__stats {
+		display: flex;
+		align-items: start;
+		gap: rem(24);
+
+		@include breakpoint.tab {
+			gap: rem(48);
+		}
+	}
+
+	&__stat {
+		display: grid;
+		gap: rem(6);
+	}
+
+	&__value {
+		@include typography.mono-amount-m;
+
+		text-transform: lowercase;
+	}
+
+	&__name {
+		@include typography.mono-label;
+
+		color: var(--sss-text-muted);
+	}
+}
+
+.charts-block {
+	&__container {
+		position: relative;
+		display: grid;
+		gap: rem(24);
+		padding-top: rem(24);
+		padding-bottom: rem(60);
+
+		@include breakpoint.tab {
+			gap: rem(48);
+			padding-bottom: rem(120);
+		}
+
+		&::before {
+			position: absolute;
+			z-index: -1;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			padding-inline: inherit;
+			background: var(--sss-border-def) content-box;
+			pointer-events: none;
+			content: '';
+		}
+	}
+
+	&__title {
+		@include typography.header-h1;
+
+		@include breakpoint.tab {
+			@include typography.display-m;
+		}
+	}
+
+	&__content {
+		display: grid;
+		gap: rem(24);
+
+		@include breakpoint.desk-s {
+			grid-template-columns: minmax(rem(696), 1fr) rem(400);
+			grid-auto-flow: column;
+		}
+	}
+
+	&__chart {
+	}
+
+	&__pairs {
+	}
+}
+
+.chart-rate {
+	position: relative;
+	display: grid;
+	gap: rem(24);
+	padding: rem(16);
+	border: 1px solid var(--sss-border-def);
+	border-radius: var(--sss-radius-lg);
+	background: var(--sss-bg-surface);
+
+	@include breakpoint.tab {
+		padding: rem(32);
+		border-radius: var(--sss-radius-xl);
+	}
+
+	&__head {
+		display: grid;
+		align-content: start;
+		gap: rem(8);
+	}
+
+	&__pair {
+		@include typography.mono-label;
+
+		color: var(--sss-text-secondary);
+	}
+
+	&__info {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: rem(8);
+	}
+
+	&__rate {
+		@include typography.mono-amount-l;
+
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: rem(12);
+	}
+
+	&__rate-info {
+		@include typography.mono-label;
+
+		display: flex;
+		align-items: center;
+		gap: rem(6);
+		padding: rem(6) rem(10);
+		border: 1px solid var(--sss-chart-rate-info-color, var(--sss-status-up));
+		border-radius: var(--sss-radius-pill);
+		color: var(--sss-chart-rate-info-color, var(--sss-status-up));
+
+		&::before {
+			@extend %ic;
+
+			color: currentColor;
+			pointer-events: none;
+			content: '\e907';
+		}
+	}
+
+	&__periods {
+		display: flex;
+		align-items: center;
+		gap: rem(4);
+		padding: rem(4);
+		border: 1px solid var(--sss-border-def);
+		border-radius: var(--sss-radius-pill);
+	}
+
+	&__period {
+		@include typography.mono-label;
+
+		padding: rem(8) rem(14);
+		border-radius: var(--sss-radius-pill);
+		background-color: transparent;
+		color: var(--sss-text-muted);
+		transition:
+			background-color var(--sss-transition-time) var(--sss-transition-ease),
+			color var(--sss-transition-time) var(--sss-transition-ease);
+		cursor: pointer;
+
+		@include mixins.hover {
+			color: var(--sss-text-primary);
+		}
+
+		&:active,
+		&._active {
+			background-color: var(--sss-bg-field-hov);
+			color: var(--sss-text-primary);
+		}
+	}
+
+	&__chart-wrap {
+		position: relative;
+		height: rem(160);
+
+		@include breakpoint.mob-m {
+			height: rem(240);
+		}
+	}
+
+	&__chart {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+.pairs {
+	position: relative;
+	display: grid;
+	align-content: start;
+	padding: rem(12) rem(8);
+	border: 1px solid var(--sss-border-def);
+	border-radius: var(--sss-radius-lg);
+	background: var(--sss-bg-surface);
+
+	@include breakpoint.tab {
+		padding: rem(16);
+		border-radius: var(--sss-radius-xl);
+	}
+
+	&__title {
+		@include typography.header-h3;
+
+		padding: rem(8) rem(4) rem(12) rem(12);
+	}
+
+	&__items {
+		display: grid;
+		gap: rem(4);
+	}
+}
+
+.pairs-item {
+	display: flex;
+	align-items: center;
+	gap: rem(14);
+	width: 100%;
+	padding: rem(12) rem(16);
+	border-radius: var(--sss-radius-md);
+	background-color: transparent;
+	transition: background-color var(--sss-transition-time) var(--sss-transition-ease);
+
+	@include mixins.hover {
+		background-color: var(--sss-bg-field);
+	}
+
+	&:active,
+	&._active {
+		background-color: var(--sss-bg-field);
+	}
+
+	&__icon {
+		position: relative;
+		display: grid;
+		flex: 0 0 rem(40);
+		place-items: center;
+		height: rem(40);
+		border-radius: 50%;
+		background: var(--sss-bg-accent-subtle);
+		font-family: var(--sss-font-inter);
+		font-weight: 600;
+		color: var(--sss-text-accent);
+	}
+
+	&__name {
+		@include typography.header-h3;
+
+		flex: 1 1 auto;
+		text-align: start;
+	}
+
+	&__info {
+		display: grid;
+		gap: rem(2);
+	}
+
+	&__rate {
+		@include typography.mono-body;
+	}
+
+	&__rate-info {
+		@include typography.mono-label;
+
+		display: flex;
+		align-items: center;
+		gap: rem(4);
+
+		&::before {
+			@extend %ic;
+
+			font-size: rem(12);
+			color: currentColor;
+			pointer-events: none;
+			content: var(--sss-rate-info-triangle, '');
+		}
+
+		&._status-up {
+			--sss-rate-info-triangle: '\e907';
+
+			color: var(--sss-status-up);
+		}
+
+		&._status-down {
+			--sss-rate-info-triangle: '\e906';
+
+			color: var(--sss-status-down);
+		}
+	}
+}

@@ -1,0 +1,35 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:meta';
+
+@function isCssVar($value) {
+	@return meta.type-of($value) == 'string';
+}
+
+@function alpha($color, $opacity) {
+	@return color.change($color, $alpha: $opacity);
+}
+
+@function toPercent($px, $from: 100) {
+	@if isCssVar($px) {
+		@return calc(#{$px} / #{$from} * 100%);
+	}
+
+	@return math.div($px, $from) * 100%;
+}
+
+@function rem($px, $current: 16) {
+	@if isCssVar($px) {
+		@return calc(#{$px} / #{$current} * 1rem);
+	}
+
+	@return math.div($px, $current) * 1rem;
+}
+
+@function em($px, $current: 16) {
+	@if isCssVar($px) {
+		@return calc(#{$px} / #{$current} * 1em);
+	}
+
+	@return math.div($px, $current) * 1em;
+}

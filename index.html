@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="icon" href="/favicon.ico" />
+
+		<title>kurs Converter — Live Exchange Rates</title>
+		<meta
+			name="description"
+			content="kurs: live currency exchange rates, a fast currency converter and historical rate charts. Track USD, EUR, UAH and 150+ currencies in one place."
+		/>
+		<meta name="theme-color" content="#0a0a0a" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:site_name" content="kurs" />
+		<meta property="og:title" content="kurs Converter — Live Exchange Rates" />
+		<meta
+			property="og:description"
+			content="Live exchange rates, instant conversion and rate charts for 150+ currencies."
+		/>
+	</head>
+	<body>
+		<div class="wrapper">
+			<load src="./src/partials/header.html" />
+
+			<main class="page">
+				<section class="convert-block">
+					<div class="convert-block__container">
+						<div class="convert-block__content">
+							<span class="convert-block__label">Live · mid-market rates</span>
+							<h1 class="convert-block__title">Every currency. One honest rate.</h1>
+							<p class="convert-block__description">
+								Convert 160+ currencies at the real exchange rate. No markup, no hidden fees — just
+								the number you actually get.
+							</p>
+							<div class="convert-block__stats">
+								<div class="convert-block__stat">
+									<span class="convert-block__value">160+</span>
+									<span class="convert-block__name">Currencies</span>
+								</div>
+								<div class="convert-block__stat">
+									<span class="convert-block__value">60s</span>
+									<span class="convert-block__name">Update rate</span>
+								</div>
+								<div class="convert-block__stat">
+									<span class="convert-block__value">0%</span>
+									<span class="convert-block__name">Hidden fees</span>
+								</div>
+							</div>
+						</div>
+						<load src="./src/partials/forms/converter-form/converter-form.html" />
+					</div>
+				</section>
+				<section class="charts-block">
+					<div class="charts-block__container">
+						<h2 class="charts-block__title">Rates today.</h2>
+						<div class="charts-block__content">
+							<div class="charts-block__chart chart-rate" data-chart>
+								<load
+									src="src/partials/error-message/error-message.html"
+									message="We couldn't load the chart."
+								/>
+								<div class="chart-rate__head">
+									<div class="chart-rate__pair" data-chart-pair>-</div>
+									<div class="chart-rate__info">
+										<div class="chart-rate__rate">
+											<span data-chart-rate>-</span>
+											<span class="chart-rate__rate-info" data-chart-rate-info>-</span>
+										</div>
+										<div
+											class="chart-rate__periods"
+											role="group"
+											data-chart-periods
+											aria-label="Periods"
+										>
+											<button
+												type="button"
+												data-chart-period="1W"
+												aria-pressed="true"
+												class="chart-rate__period _active"
+											>
+												1W
+											</button>
+											<button
+												type="button"
+												data-chart-period="1M"
+												aria-pressed="false"
+												class="chart-rate__period"
+											>
+												1M
+											</button>
+											<button
+												type="button"
+												data-chart-period="3M"
+												aria-pressed="false"
+												class="chart-rate__period"
+											>
+												3M
+											</button>
+											<button
+												type="button"
+												data-chart-period="1Y"
+												aria-pressed="false"
+												class="chart-rate__period"
+											>
+												1Y
+											</button>
+											<button
+												type="button"
+												data-chart-period="5Y"
+												aria-pressed="false"
+												class="chart-rate__period"
+											>
+												5Y
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="chart-rate__chart-wrap" data-chart-canvas-wrap>
+									<canvas
+										class="chart-rate__chart"
+										data-chart-canvas
+										role="img"
+										aria-label="chart"
+									></canvas>
+								</div>
+							</div>
+							<div class="charts-block__pairs pairs" data-pairs>
+								<load
+									src="src/partials/error-message/error-message.html"
+									message="We couldn't load the pairs."
+								/>
+								<h3 class="pairs__title">Popular pairs</h3>
+								<ul class="pairs__items" data-pairs-list>
+									<template data-pairs-template>
+										<li>
+											<button
+												data-pair-button
+												data-from
+												data-to
+												type="button"
+												class="pairs__item pairs-item"
+											>
+												<span class="pairs-item__icon" data-pair-icon></span>
+												<span class="pairs-item__name" data-pair-name></span>
+												<span class="pairs-item__info">
+													<span class="pairs-item__rate" data-pair-rate></span>
+													<span class="pairs-item__rate-info" data-pair-rate-info></span>
+												</span>
+											</button>
+										</li>
+									</template>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			<load src="./src/partials/footer.html" />
+		</div>
+
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>

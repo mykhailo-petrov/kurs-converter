@@ -1,0 +1,31 @@
+<div
+	data-select-trigger
+	class="custom-select__trigger"
+	role="combobox"
+	aria-expanded="false"
+	tabindex="0"
+>
+	<span data-select-label class="custom-select__label">Choose...</span>
+	<span class="custom-select__arrow _icon-chevron-down"></span>
+</div>
+<div data-select-dropdown class="custom-select__dropdown">
+	<label
+		data-select-search-container
+		hidden
+		aria-hidden="true"
+		class="custom-select__search-container"
+	>
+		<input
+			data-select-search-input
+			type="text"
+			autocomplete="off"
+			class="form-container__input custom-select__search-input"
+			placeholder="Type something..."
+		/>
+	</label>
+	<div
+		data-select-options
+		class="custom-select__options"
+		role="listbox"
+	></div>
+</div>

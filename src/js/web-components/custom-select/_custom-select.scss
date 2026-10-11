@@ -1,0 +1,270 @@
+@use '@scss' as *;
+@use '@scss/typography' as typography;
+@use '@scss/base-mixins' as mixins;
+@use '@scss/breakpoints' as breakpoint;
+@use '@scss/font/icons' as icons;
+@use '@scss/local-mixins' as local-mixins;
+
+@mixin select-icon {
+	&[data-icon] {
+		&::before {
+			display: grid;
+			flex: 0 0 var(--sss-select-icon-size, rem(40));
+			place-items: center;
+			height: var(--sss-select-icon-size, rem(40));
+			border-radius: 50%;
+			background: var(--sss-bg-accent-subtle);
+			font-family: var(--sss-font-inter);
+			font-size: var(--sss-icon-size, rem(17));
+			color: var(--sss-text-accent);
+			pointer-events: none;
+			content: attr(data-icon);
+		}
+	}
+}
+
+.custom-select {
+	--sss-select-height: var(--sss-input-height, rem(48));
+	--sss-select-option-height: rem(60);
+
+	position: relative;
+	display: block;
+	height: var(--sss-select-height);
+
+	&__trigger {
+		@include typography.header-h3;
+
+		--sss-icon-color: var(--sss-text-secondary);
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: rem(10);
+		padding: rem(8);
+		border: 1px solid var(--sss-bg-field);
+		border-radius: var(--sss-custom-select-border-radius, var(--sss-radius-pill));
+		background: var(--sss-bg-field);
+		transition:
+			background var(--sss-transition-time) var(--sss-transition-ease),
+			border-color var(--sss-transition-time) var(--sss-transition-ease);
+
+		@include mixins.hover {
+			--sss-icon-color: var(--sss-text-primary);
+
+			border-color: var(--sss-bg-field-hov);
+			background: var(--sss-bg-field-hov);
+		}
+
+		&:active,
+		._show & {
+			--sss-icon-color: var(--sss-text-accent);
+			--sss-icon-transform: rotate(-180deg);
+
+			border-color: var(--sss-accent-def);
+			background: var(--sss-bg-field-hov);
+		}
+	}
+
+	&__label {
+		--sss-select-icon-size: #{rem(32)};
+		--sss-icon-size: #{rem(15)};
+
+		display: flex;
+		flex: 1 1 auto;
+		align-items: center;
+		gap: rem(10);
+
+		@include select-icon;
+
+		&._select-icon-sm {
+			--sss-icon-size: #{rem(13)};
+		}
+	}
+
+	&__arrow {
+		--sss-icon-size: rem(16);
+	}
+
+	&__dropdown {
+		position: absolute;
+		z-index: 10;
+		top: 100%;
+		right: 0;
+		display: grid;
+		gap: rem(4);
+		visibility: hidden;
+		min-width: rem(360);
+		margin-top: rem(8);
+		padding: rem(8);
+		border: 1px solid var(--sss-border-strong);
+		border-radius: var(--sss-radius-lg);
+		background: var(--sss-bg-surface-raised);
+		box-shadow: 0 rem(24) rem(48) rem(-8) rgb(0 0 0 / 0.55);
+		opacity: 0;
+		transition:
+			opacity var(--sss-transition-time) var(--sss-transition-ease),
+			color var(--sss-transition-time) var(--sss-transition-ease);
+		pointer-events: none;
+
+		._direction-up & {
+			top: auto;
+			bottom: 100%;
+			margin-top: 0;
+			margin-bottom: rem(8);
+		}
+
+		._show & {
+			visibility: visible;
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+
+	&__options {
+		position: relative;
+		display: grid;
+		align-content: start;
+		width: 100%;
+		max-height: rem(326);
+		overflow-y: auto;
+
+		@include local-mixins.custom-scrollbar;
+
+		@include breakpoint.desk-l {
+			max-height: rem(426);
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__group {
+		display: grid;
+		align-content: start;
+		gap: rem(2);
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	&__group-label {
+		@include typography.mono-label;
+
+		padding: rem(12) 0 rem(6) rem(12);
+		color: var(--sss-text-muted);
+	}
+
+	&__option {
+		display: flex;
+		align-items: center;
+		gap: rem(14);
+		height: var(--sss-select-option-height);
+		padding: rem(12) rem(8);
+		border-radius: var(--sss-radius-md);
+		background: transparent;
+		transition:
+			background var(--sss-transition-time) var(--sss-transition-ease),
+			box-shadow var(--sss-transition-time) var(--sss-transition-ease);
+
+		@include mixins.hover {
+			background: var(--sss-bg-field);
+		}
+
+		[data-select-icon] & {
+			@include select-icon;
+		}
+
+		&[hidden] {
+			display: none;
+		}
+
+		&:active,
+		&[selected] {
+			background: var(--sss-bg-accent-subtle);
+
+			&::after {
+				@extend %ic;
+
+				display: block;
+				flex: 0 0 rem(20);
+				height: rem(20);
+				margin-inline-start: auto;
+				color: var(--sss-text-accent);
+				content: '\e902';
+			}
+		}
+
+		&._select-focus {
+			box-shadow: rem(0) rem(0) rem(2) var(--sss-border-focus) inset;
+		}
+
+		&._select-icon-sm {
+			--sss-icon-size: #{rem(15)};
+		}
+	}
+
+	&__option-content {
+		display: grid;
+		gap: rem(2);
+		min-width: 0;
+	}
+
+	&__option-name {
+		@include typography.body-s;
+
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color: var(--sss-text-muted);
+		overflow: hidden;
+	}
+
+	&__search-container {
+		display: flex;
+		align-items: center;
+		gap: rem(10);
+		height: rem(48);
+		padding-inline: rem(16);
+		border: 1px solid var(--sss-bg-field);
+		border-radius: var(--sss-radius-md);
+		background: var(--sss-bg-field);
+		color: var(--sss-text-muted);
+		transition:
+			background var(--sss-transition-time) var(--sss-transition-ease),
+			border-color var(--sss-transition-time) var(--sss-transition-ease),
+			color var(--sss-transition-time) var(--sss-transition-ease);
+
+		&::before {
+			@extend %ic;
+
+			font-size: rem(18);
+			color: currentColor;
+			transition: color var(--sss-transition-time) var(--sss-transition-ease);
+			pointer-events: none;
+			content: '\e908';
+		}
+
+		@include mixins.hover {
+			border-color: var(--sss-bg-field-hov);
+			background: var(--sss-bg-field-hov);
+		}
+
+		&:focus-within {
+			border-color: var(--sss-border-focus);
+			background: var(--sss-bg-field);
+			color: var(--sss-text-primary);
+		}
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	&__search-input {
+		@include typography.body-m;
+
+		background: transparent;
+		color: currentColor;
+	}
+}

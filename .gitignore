@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-ssr
+*.local
+out.css
+
+*.log
+npm-debug.log*
+
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/*.code-snippets
+.idea/*
+!.idea/IntelliLang.xml
+!.idea/prettier.xml
+!.idea/inspectionProfiles/

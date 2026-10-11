@@ -1,0 +1,80 @@
+@use '@scss' as *;
+@use '@scss/base-mixins' as mixins;
+
+@mixin watcherStagger($count: 3, $step: 80ms) {
+	@for $i from 0 through $count {
+		$delay: $i * $step;
+
+		&--#{$i} {
+			opacity: 0;
+			transform: translateY(rem(30));
+			transition:
+				opacity var(--sss-watcher-def-duration) var(--sss-watcher-ease) #{$delay},
+				transform var(--sss-watcher-def-duration) var(--sss-watcher-ease) #{$delay},
+				var(--sss-element-transition, color 0s);
+
+			._watcher & {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	}
+}
+
+@mixin pseudo-circle($size: rem(7), $bg: var(--sss-accent-def), $pseudo: 'after') {
+	&::#{$pseudo} {
+		flex: 0 0 $size;
+		width: $size;
+		height: $size;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background-color: $bg;
+		opacity: var(--sss-preudo-circle-op, 1);
+		transform: scale(var(--sss-preudo-circle-scale, 1));
+		transition:
+			transform var(--sss-transition-time) var(--sss-transition-ease),
+			opacity var(--sss-transition-time) var(--sss-transition-ease);
+		pointer-events: none;
+		content: '';
+	}
+}
+
+@mixin custom-scrollbar($thumb-width: 4, $offset-right: 0, $offset-top: 20) {
+	color: transparent;
+
+	& > * {
+		color: var(--sss-text-primary);
+	}
+
+	@include mixins.hover {
+		color: var(--sss-border-strong);
+	}
+
+	&::-webkit-scrollbar {
+		width: rem($thumb-width + $offset-right);
+	}
+
+	&::-webkit-scrollbar-track {
+		margin-top: rem($offset-top);
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		$radius: $thumb-width * 0.5;
+
+		border-right: rem($offset-right) solid transparent;
+		border-radius: #{rem($radius) rem($radius + $offset-right) rem($radius + $offset-right)
+			rem($radius)} / #{rem($radius)};
+		background: transparent;
+		box-shadow: inset 0 0 0 rem(10);
+
+		@include mixins.hover {
+			box-shadow: inset 0 0 0 rem(10) var(--sss-border-focus);
+		}
+	}
+
+	@supports not selector(::-webkit-scrollbar) {
+		scrollbar-width: thin;
+		scrollbar-color: currentColor transparent;
+	}
+}

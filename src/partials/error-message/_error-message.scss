@@ -1,0 +1,22 @@
+@use '@scss' as *;
+@use '@scss/typography' as typography;
+
+.block-error {
+	@include typography.header-h2;
+
+	position: absolute;
+	z-index: 2;
+	inset: 0;
+	display: none;
+	place-content: center;
+	gap: rem(16);
+	border-radius: inherit;
+	background: var(--sss-bg-field);
+	text-align: center;
+	overflow: hidden;
+	opacity: 0.95;
+
+	._error > & {
+		display: grid;
+	}
+}
