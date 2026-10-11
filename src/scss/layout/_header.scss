@@ -79,7 +79,7 @@
 	gap: rem(12);
 	width: 100%;
 	height: auto;
-	margin-top: var(--sss-header-height);
+	margin-top: calc(var(--sss-header-height) - rem(1));
 	padding: rem(12);
 	background: var(--sss-bg-page);
 	transform: translateY(var(--sss-header-menu-translate, -100%));

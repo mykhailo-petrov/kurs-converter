@@ -27,7 +27,7 @@
 			<load src="./src/partials/header.html" />
 
 			<main class="page">
-				<section class="convert-block">
+				<section class="convert-block" id="converter">
 					<div class="convert-block__container">
 						<div class="convert-block__content">
 							<span class="convert-block__label">Live · mid-market rates</span>
@@ -54,7 +54,7 @@
 						<load src="./src/partials/forms/converter-form/converter-form.html" />
 					</div>
 				</section>
-				<section class="charts-block">
+				<section class="charts-block" id="charts">
 					<div class="charts-block__container">
 						<h2 class="charts-block__title">Rates today.</h2>
 						<div class="charts-block__content">
@@ -128,7 +128,11 @@
 									></canvas>
 								</div>
 							</div>
-							<div class="charts-block__pairs pairs" data-pairs>
+							<div
+								class="charts-block__pairs pairs"
+								id="rates"
+								data-pairs
+							>
 								<load
 									src="src/partials/error-message/error-message.html"
 									message="We couldn't load the pairs."
