@@ -31,7 +31,8 @@
 				opacity var(--sss-transition-time) var(--sss-transition-ease);
 		}
 
-		&._form-focus {
+		&._form-focus,
+		&:focus {
 			outline: none;
 		}
 
